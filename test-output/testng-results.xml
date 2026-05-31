@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-05-26T12:02:46 IST" name="Default suite" finished-at="2026-05-26T12:03:20 IST" duration-ms="34169">
+    <groups>
+    </groups>
+    <test started-at="2026-05-26T12:02:46 IST" name="Default test" finished-at="2026-05-26T12:03:20 IST" duration-ms="34169">
+      <class name="tests.ProductTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.ProductTest@71d44a3]" started-at="2026-05-26T12:02:46 IST" name="setup" finished-at="2026-05-26T12:02:51 IST" duration-ms="4978" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyProductFlow()[pri:0, instance:tests.ProductTest@71d44a3]" started-at="2026-05-26T12:02:51 IST" name="verifyProductFlow" finished-at="2026-05-26T12:03:20 IST" duration-ms="28869" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyProductFlow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.ProductTest@71d44a3]" started-at="2026-05-26T12:03:20 IST" name="tearDown" finished-at="2026-05-26T12:03:20 IST" duration-ms="287" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.ProductTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

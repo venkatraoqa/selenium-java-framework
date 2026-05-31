@@ -1,0 +1,13 @@
+<suite name="Suite">
+
+  <listeners>
+    <listener class-name="Day46.Extentreportmanager"/>
+  </listeners>
+
+  <test name="Test">
+    <classes>
+      <class name="Day46.OrangeHrm"/>
+    </classes>
+  </test>
+
+</suite>
