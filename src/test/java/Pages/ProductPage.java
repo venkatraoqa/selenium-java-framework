@@ -1,115 +1,187 @@
 package Pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import utils.Waits;
 
 public class ProductPage {
 
     WebDriver driver;
-
-    // Constructor
+    Waits wait;
 
     public ProductPage(WebDriver driver) {
 
         this.driver = driver;
+        this.wait = new Waits(driver);
     }
 
-    // =========================
     // Locators
-    // =========================
-
-    // Products Button
 
     By productsBtn =
-      By.xpath("//a[text()=' Products']");
-
-    // Search Box
+            By.xpath("//a[contains(text(),'Products')]");
 
     By searchBox =
-      By.id("search_product");
-
-    // Search Button
+            By.id("search_product");
 
     By searchBtn =
-      By.id("submit_search");
-
-    // Searched Products Text
+            By.id("submit_search");
 
     By searchedProducts =
-      By.xpath("//h2[text()='Searched Products']");
-
-    // Add To Cart Button
+            By.xpath("//h2[contains(text(),'Searched Products')]");
 
     By addToCart =
-      By.xpath("(//a[text()='Add to cart'])[1]");
-
-    // View Cart Button
+            By.xpath("(//a[contains(text(),'Add to cart')])[1]");
 
     By viewCart =
-      By.xpath("//u[text()='View Cart']");
-
-    // =========================
-    // Methods
-    // =========================
+            By.xpath("//u[contains(text(),'View Cart')]");
 
     // Open Products Page
 
     public void openProductsPage() {
 
-        driver.findElement(productsBtn)
-              .click();
+        try {
+
+            WebElement products =
+                    driver.findElement(productsBtn);
+
+            wait.waitForClickable(products);
+
+            JavascriptExecutor js =
+                    (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "arguments[0].click();",
+                    products);
+
+            Thread.sleep(3000);
+
+            // Google Ad Redirect Handle
+
+            if (driver.getCurrentUrl()
+                    .contains("google_vignette")) {
+
+                driver.navigate().back();
+
+                Thread.sleep(3000);
+
+                products =
+                        driver.findElement(productsBtn);
+
+                js.executeScript(
+                        "arguments[0].click();",
+                        products);
+
+                Thread.sleep(3000);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 
     // Search Product
 
-    public void searchProduct(
-            String productName) {
+    public void searchProduct(String productName) {
 
-        driver.findElement(searchBox)
-              .sendKeys(productName);
+        try {
 
-        driver.findElement(searchBtn)
-              .click();
+            WebElement search =
+                    driver.findElement(searchBox);
+
+            wait.waitForVisibility(search);
+
+            search.clear();
+
+            search.sendKeys(productName);
+
+            WebElement searchButton =
+                    driver.findElement(searchBtn);
+
+            wait.waitForClickable(searchButton);
+
+            JavascriptExecutor js =
+                    (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "arguments[0].click();",
+                    searchButton);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 
-    // Verify Search Result
+    // Verify Search
 
     public boolean isProductSearchSuccessful() {
 
-        return driver.findElement(searchedProducts)
-                     .isDisplayed();
+        try {
+
+            WebElement result =
+                    driver.findElement(searchedProducts);
+
+            wait.waitForVisibility(result);
+
+            return result.isDisplayed();
+
+        } catch (Exception e) {
+
+            return false;
+        }
     }
 
-    // Add Product To Cart
+    // Add To Cart
 
     public void addProductToCart() {
 
-        WebElement cartButton =
-            driver.findElement(addToCart);
+        try {
 
-        JavascriptExecutor js =
-            (JavascriptExecutor) driver;
+            WebElement cartButton =
+                    driver.findElement(addToCart);
 
-        js.executeScript(
-            "arguments[0].click();",
-            cartButton);
+            wait.waitForClickable(cartButton);
+
+            JavascriptExecutor js =
+                    (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "arguments[0].click();",
+                    cartButton);
+
+            Thread.sleep(2000);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 
     // View Cart
 
     public void clickViewCart() {
 
-        WebElement cart =
-            driver.findElement(viewCart);
+        try {
 
-        JavascriptExecutor js =
-            (JavascriptExecutor) driver;
+            WebElement cart =
+                    driver.findElement(viewCart);
 
-        js.executeScript(
-            "arguments[0].click();",
-            cart);
+            wait.waitForClickable(cart);
+
+            JavascriptExecutor js =
+                    (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "arguments[0].click();",
+                    cart);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 }

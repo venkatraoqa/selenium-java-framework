@@ -56,13 +56,18 @@ public class ProductTest extends BaseTest {
 
         // Open Products Page
 
+     // Open Products Page
+
         product.openProductsPage();
+
+        System.out.println(
+                "Current URL : "
+                + driver.getCurrentUrl());
 
         // Search Product
 
         product.searchProduct(
                 "Tshirt");
-
         // Product Validation
 
         Assert.assertTrue(
