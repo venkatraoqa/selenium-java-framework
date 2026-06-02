@@ -9,8 +9,7 @@
   <artifactId>twilio</artifactId>
   <version>9.13.0</version>
 </dependency>
-
-    <!-- Selenium -->
+    <!-- Selenium test -->
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
